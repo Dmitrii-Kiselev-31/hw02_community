@@ -10,7 +10,8 @@ class Post(models.Model):
     pub_date = models.DateTimeField(auto_now_add=True)
     group = models.ForeignKey(
         'Group',
-        blank=True, null=True,
+        blank=True,
+        null=True,
         on_delete=models.SET_NULL,
         related_name='posts',
     )
@@ -20,14 +21,16 @@ class Post(models.Model):
         related_name='posts',
     )
 
-    def __str__(self):
-        return self.text
+    class Meta:
+        ordering = ['-pub_date']
 
 
 class Group(models.Model):
 
     title = models.CharField(max_length=200)
     slug = models.SlugField(unique=True)
+    # Если я задаю значение в slug, то pytest не проходит
+    # "Свойство `slug` модели `Group` должно быть уникальным"
     description = models.TextField()
 
     def __str__(self):

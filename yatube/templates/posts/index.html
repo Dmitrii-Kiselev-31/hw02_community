@@ -3,6 +3,7 @@
   <head>
     <title>Последние обновления на сайте</title>
   </head>
+  <title>Записи сообщества {{ group.title }}</title>
   <body>
     <main> 
       {% block content %}
@@ -23,11 +24,7 @@
       {% if not forloop.last %}<hr>{% endif %}
       {% endfor %}
       {% endblock %} 
-    </main>
-    <!-- Использованы классы бустрапа: -->
-    <!-- border-top: создаёт тонкую линию сверху блока -->
-    <!-- text-center: выравнивает текстовые блоки внутри блока по центру -->
-    <!-- py-3: контент внутри размещается с отступом сверху и снизу -->         
+    </main>        
     <footer class="border-top text-center py-3">
       {% include 'includes/footer.html' %}    
     </footer>

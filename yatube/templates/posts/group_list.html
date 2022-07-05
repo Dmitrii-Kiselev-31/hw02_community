@@ -1,27 +1,28 @@
 {% extends 'base.html' %} 
-{% load static %}
-  <head>
-    <title>Записи сообщества {{ group.title }}</title>  
-  </head>
+{% load static %}  
   <body>
     <header>
       {% include 'includes/header.html' %}      
     </header>
     <main>
-      {% block content %}
-      {% for post in posts %}
-        <ul>
-          <li>
-            Автор: {{ post.author.get_full_name }}
-          </li>
-          <li>
-            Дата публикации: {{ post.pub_date|date:"d E Y" }}
-          </li>
-        </ul>
-        <p> {{ post.text }}</p>
-        {% if not forloop.last %}<hr>{% endif %}
-      {% endfor %}
-      {% endblock %}  
+      <div class="container">
+        {% block content %}
+        <h1>Лев Толстой – зеркало русской революции.</h1>
+        <p>{{ group }}</p>
+        {% for post in posts %}
+          <ul>
+            <li>
+              Автор: {{ post.author.get_full_name }}
+            </li>
+            <li>
+              Дата публикации: {{ post.pub_date|date:"d E Y" }}
+            </li>
+          </ul>
+          <p>{{ post.text }}</p>
+          {% if not forloop.last %}<hr>{% endif %}
+        {% endfor %}
+        {% endblock %}
+      </div>  
     </main>
     <footer class="page-footer font-small blue border-top">
     </footer>
