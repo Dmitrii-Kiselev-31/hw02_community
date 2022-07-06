@@ -29,8 +29,10 @@ class Group(models.Model):
 
     title = models.CharField(max_length=200)
     slug = models.SlugField(unique=True)
-    # Если я задаю значение в slug, то pytest не проходит
-    # "Свойство `slug` модели `Group` должно быть уникальным"
+    # Вы писали "не очень большое максимальное значение длины"
+    # я так и делал задавал max_length от 1 до 50 и выполнял команду pytest
+    # AssertionError: Свойство `slug` модели `Group` должно быть уникальным
+    # 1 failed, 6 passed не проходит
     description = models.TextField()
 
     def __str__(self):
